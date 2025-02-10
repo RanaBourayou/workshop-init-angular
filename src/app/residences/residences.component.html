@@ -1,0 +1,29 @@
+
+
+<h1>Liste des résidences</h1>
+<input type="text" placeholder="Rechercher par adresse..." [(ngModel)]="searchText" class="form-control mb-3">
+
+<div *ngFor="let res of listResidences">
+  <div class="card" style="width: 18rem; margin: 10px;">
+    <img class="card-img-top" [src]="res.image" alt="Image de la résidence">
+    <div class="card-body">
+      <h2 class="card-title">{{ res.name }}</h2>
+      <h5 class="card-title">{{ res.status }}</h5>
+      <button class="btn btn-primary" (click)="showLocation(res)">Show Location</button>
+      <h5 class="card-title">
+        <span [ngClass]="{
+          'text-success': res.status === 'Disponible',
+          'text-warning': res.status === 'En Construction',
+          'text-danger': res.status === 'Vendu'
+        }">{{ res.status }}</span>
+      </h5>
+      <button class="btn btn-outline-danger ml-2" (click)="addToFavorites(res)">
+        <i *ngIf="!isFavorite(res)" class="bi bi-heart"></i>
+        <i *ngIf="isFavorite(res)" class="bi bi-heart-fill text-danger"></i>
+        Like
+      </button>
+            
+      </div>
+    </div>
+  </div>
+
