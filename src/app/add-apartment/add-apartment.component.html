@@ -1,0 +1,106 @@
+<form [formGroup]="apartForm" (ngSubmit)="onSubmit()">
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Apartment Number</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" formControlName="appartnumber">
+      <span class="text-danger" *ngIf="apartForm.get('appartnumber')?.hasError('required')">
+        Number required
+      </span>
+      <span class="text-danger" *ngIf="apartForm.get('appartnumber')?.hasError('pattern')">
+        Only numbers allowed
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Floor Number</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" formControlName="floornumber">
+      <span class="text-danger" *ngIf="apartForm.get('floornumber')?.hasError('required')">
+        Floor number required
+      </span>
+      <span class="text-danger" *ngIf="apartForm.get('floornumber')?.hasError('pattern')">
+        Only numbers allowed
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Surface:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" formControlName="surfacenumber">
+      <span class="text-danger" *ngIf="apartForm.get('surfacenumber')?.hasError('required')">
+        Surface required
+      </span>
+    </div>
+  </div>
+
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">Terrace</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" formControlName="terrace" (change)="onTerraceChange('yes')" value="yes">
+          <label class="form-check-label">Yes</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" formControlName="terrace" (change)="onTerraceChange('no')" value="no">
+          <label class="form-check-label">No</label>
+        </div>
+        <span class="text-danger" *ngIf="apartForm.get('terrace')?.hasError('required')">
+          Selection required
+        </span>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Surface Terrace:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" formControlName="surfaceterrace">
+      <span class="text-danger" *ngIf="apartForm.get('surfaceterrace')?.hasError('required')">
+        Surface terrace required
+      </span>
+    </div>
+  </div>
+
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">Category:</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" formControlName="category" value="S+1">
+          <label class="form-check-label">S+1</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" formControlName="category" value="S+2">
+          <label class="form-check-label">S+2</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" formControlName="category" value="S+3">
+          <label class="form-check-label">S+3</label>
+        </div>
+        <span class="text-danger" *ngIf="apartForm.get('category')?.hasError('required')">
+          Category required
+        </span>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Residence :</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" formControlName="residence">
+      <span class="text-danger" *ngIf="apartForm.get('residence')?.hasError('required')">
+        Residence required
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary" [disabled]="apartForm.invalid">Add</button>
+      <button type="reset" class="btn btn-secondary">Reset</button>
+    </div>
+  </div>
+</form>

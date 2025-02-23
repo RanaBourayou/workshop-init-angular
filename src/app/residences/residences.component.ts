@@ -7,7 +7,8 @@ import { Residence } from '../core/models/Residence';
   styleUrls: ['./residences.component.css']
 })
 export class ResidencesComponent {
-address:String=""
+  date:Date=new Date();
+address:String="";
   listResidences:Residence[]=[
     {id:1,"name": "El fel","address":"Borj Cedria","image":"../../assets/images/R1.jpeg", status: "Disponible"},
     {id:2,"name": "El yasmine","address":"Ezzahra","image":"../../assets/images/R2.jpeg", status:"Disponible" },
